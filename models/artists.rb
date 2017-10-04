@@ -1,4 +1,5 @@
 require '../db/sqlrunner'
+require_relative 'albums'
 
 class Artist
 
@@ -24,10 +25,20 @@ class Artist
         @id = result[0]["id"].to_i
     end
 
+    def self.all
+        sql = "SELECT * FROM artists;"
+        values = []
+        artists = SqlRunner.run(sql, "select_all_artists", values)
+        return artists.map{|artist| Artist.new(artist)}
+    end
 
-
-
-
+    def self.find_albums
+        sql = "SELECT * FROM artists WHERE id = $1"
+        values = [album.id]
+        album_hash = SqlRunner.run(sql, "find_artist", values)
+        album_objects = album_hash.map{|artist| Artist.new(artist)}
+        return album_objects
+    end
 
 
 end
