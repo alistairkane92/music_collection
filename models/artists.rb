@@ -39,5 +39,10 @@ class Artist
         return album_hash.map{|album| Album.new(album)}
     end
 
+    def update_artist
+        sql = "UPDATE artists SET (name) = ($1) WHERE id = $2 "
+        values = [@name, @id]
+        SqlRunner.run(sql, "update_artist", values)
+    end
 
 end
