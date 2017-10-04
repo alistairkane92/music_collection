@@ -4,6 +4,7 @@ require_relative("../models/albums.rb")
 
 
 Artist.delete_all()
+Album.delete_all()
 
 artist1 = Artist.new({"name" => 'Metallica'})
 
@@ -13,11 +14,11 @@ artist2 = Artist.new({"name" => 'Queen'})
 
 artist2.save()
 
-album1 = Album.new({"name" => 'The Black Album', "genre" => "Metal", 1})
+album1 = Album.new({"name" => 'The Black Album', "genre" => "Metal", "artist_id" => 1})
 
 album1.save()
 
-album2 = Album.new({"name" => "A Kind of Magic", "genre" => "Pop", 2})
+album2 = Album.new({"name" => "A Kind of Magic", "genre" => "Pop", "artist_id" => 2})
 
 album2.save()
 

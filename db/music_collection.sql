@@ -11,5 +11,5 @@ CREATE TABLE albums(
     -- REFERENCES artists_id,
     name VARCHAR(255),
     genre VARCHAR(255),
-    artist_id VARCHAR(255) REFERENCES artists(id)
+    artist_id INT4 REFERENCES artists(id)
 );
