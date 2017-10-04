@@ -3,7 +3,7 @@ require_relative 'artists'
 
 class Album
 
-    attr_accessor :name
+    attr_accessor :name, :genre, :artist_id
     attr_reader :id
 
     def initialize(options)
@@ -33,8 +33,8 @@ class Album
         return albums.map{|album| Album.new(album)}
     end
 
-    def self.find_artist
-        sql = "SELECT * FROM albums WHERE id = $1"
+    def artist()
+        sql = "SELECT * FROM artists WHERE id = $1"
         values = [@artist_id]
         artist_hash = SqlRunner.run(sql, "find_artist", values)
         artist_objects = artist_hash.map{|artist| Artist.new(artist)}

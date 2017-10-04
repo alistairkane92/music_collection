@@ -32,12 +32,11 @@ class Artist
         return artists.map{|artist| Artist.new(artist)}
     end
 
-    def self.find_albums
-        sql = "SELECT * FROM artists WHERE id = $1"
-        values = [album.id]
-        album_hash = SqlRunner.run(sql, "find_artist", values)
-        album_objects = album_hash.map{|artist| Artist.new(artist)}
-        return album_objects
+    def albums()
+        sql = "SELECT * FROM albums WHERE artist_id = $1"
+        values = [@id]
+        album_hash = SqlRunner.run(sql, "find_albums", values)
+        return album_hash.map{|album| Album.new(album)}
     end
 
 
